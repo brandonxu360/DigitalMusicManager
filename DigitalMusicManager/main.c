@@ -41,6 +41,10 @@ int main(void) {
 				//display function fully handles this case 
 				display(head);
 				break;
+
+			case 4:
+				edit(head);
+				break;
 		}
 
 		

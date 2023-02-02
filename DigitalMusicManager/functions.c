@@ -227,10 +227,11 @@ void display(Node* head) {
 		int count = 1; //used to number the records that are printed
 		int found = 0; //indicator for if no records matching the artist are found
 
+		//prompt artist name
 		printf("Enter the name of the artist you would like to search\n\n");
-		printf("Input:");
+		printf("Input: ");
 
-		scanf("%s", &search);
+		scanf("%s", &search); //get input
 
 		while (current != NULL) { //iterate until the end of the list
 
@@ -252,5 +253,124 @@ void display(Node* head) {
 }
 
 void edit(Node* head) {
+	Node* current = head;
+	int index = 0; //important to use to iterate back to the record the user chooses if multiple records are found
+	int found = 0, choice = 0, attribute = 0;
+	char artist[64];
+
+	//prompt artist name
+	printf("\nEnter the name of the artist you would like to search\n\n");
+	printf("Input: ");
+
+	scanf("%s", &artist); //get input
+
+	printf("\nRESULTS");
+	printf("\n--------------------------\n");
+
+	while (current != NULL) { //iterate until the end of the list
+
+		if (strcmp(artist, current->data.artist) == 0) { //print record with corresponding index if the artist names match
+			printf("(%d)   %s, %s, %s, %s, %d min %d sec, %d, %d\n", index, current->data.artist,
+				current->data.album, current->data.song, current->data.genre, current->data.length.minutes,
+				current->data.length.seconds, current->data.timesPlayed, current->data.rating);
+
+			found++;
+		}
+
+		index++;
+		current = current->next; //move to next node
+	
+	}
+
+	if (found == 0) { //no artist matching the search name is found
+		printf("\nSorry, no records matching this artist were found.\n");
+	}
+
+	else {
+		printf("\nEnter the number that corresponds with the record you would like to edit\n\n");
+		printf("Input: ");
+
+		scanf("%d", &choice);
+
+		//reset current to head to iterate through list again
+		current = head;
+
+		for (int i = 0; i < choice; i++) { //iterate through the linked list until at chosen record (by index)
+			current = current->next;
+		}
+
+		system("cls");
+
+		printf("Modifying record: %s, %s, %s, %s, %d min %d sec, %d, %d\n", current->data.artist,
+			current->data.album, current->data.song, current->data.genre, current->data.length.minutes,
+			current->data.length.seconds, current->data.timesPlayed, current->data.rating);
+
+		printf("\nEnter the number corresponding with the attribute to edit\n");
+		printf("(1)   artist\n");
+		printf("(2)   album\n");
+		printf("(3)   song\n");
+		printf("(4)   genre\n");
+		printf("(5)   length\n");
+		printf("(6)   times played\n");
+		printf("(7)   rating\n\n");
+
+		printf("Input: ");
+
+		scanf("%d", &attribute);
+
+		printf("\n\n");
+
+		switch (attribute) {
+			case 1:
+				printf("Enter the new artist name\n\n");
+				printf("Input: ");
+				scanf("%s", current->data.artist);
+				break;
+
+			case 2:
+				printf("Enter the new album name\n\n");
+				printf("Input: ");
+				scanf("%s", current->data.album);
+				break;
+
+			case 3:
+				printf("Enter the new song name\n\n");
+				printf("Input: ");
+				scanf("%s", current->data.song);
+				break;
+
+			case 4:
+				printf("Enter the new genre name\n\n");
+				printf("Input: ");
+				scanf("%s", current->data.genre);
+				break;
+
+			case 5:
+				printf("Enter minutes: \n\n");
+				printf("Input: ");
+				scanf("%d", current->data.length.minutes);
+
+				printf("\n\nEnter seconds: \n\n");
+				printf("Input: ");
+				scanf("%d", current->data.length.seconds);
+				break;
+
+			case 6:
+				printf("Enter new number of times played: \n\n");
+				printf("Input: ");
+				scanf("%d", current->data.timesPlayed);
+				break;
+
+			case 7:
+				printf("Enter new rating: \n\n");
+				printf("Input: ");
+				scanf("%d", current->data.rating);
+				break;
+		}
+
+		printf("\n\nModified record: %s, %s, %s, %s, %d min %d sec, %d, %d\n", current->data.artist,
+			current->data.album, current->data.song, current->data.genre, current->data.length.minutes,
+			current->data.length.seconds, current->data.timesPlayed, current->data.rating);
+	}
 
 }
