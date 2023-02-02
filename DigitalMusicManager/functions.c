@@ -287,6 +287,7 @@ void edit(Node* head) {
 	}
 
 	else {
+		//prompt selection of record to modify (out of the records that match the inputted artist name)
 		printf("\nEnter the number that corresponds with the record you would like to edit\n\n");
 		printf("Input: ");
 
@@ -301,10 +302,12 @@ void edit(Node* head) {
 
 		system("cls");
 
+		//display record selected for modification
 		printf("Modifying record: %s, %s, %s, %s, %d min %d sec, %d, %d\n", current->data.artist,
 			current->data.album, current->data.song, current->data.genre, current->data.length.minutes,
 			current->data.length.seconds, current->data.timesPlayed, current->data.rating);
 
+		//prompt attribute selection
 		printf("\nEnter the number corresponding with the attribute to edit\n");
 		printf("(1)   artist\n");
 		printf("(2)   album\n");
@@ -313,39 +316,39 @@ void edit(Node* head) {
 		printf("(5)   length\n");
 		printf("(6)   times played\n");
 		printf("(7)   rating\n\n");
-
 		printf("Input: ");
 
 		scanf("%d", &attribute);
 
 		printf("\n\n");
 
-		switch (attribute) {
-			case 1:
+		switch (attribute) { //edit selected attribute based on user input (attribute variable)
+			
+			case 1: //artist
 				printf("Enter the new artist name\n\n");
 				printf("Input: ");
 				scanf("%s", current->data.artist);
 				break;
 
-			case 2:
+			case 2: //album
 				printf("Enter the new album name\n\n");
 				printf("Input: ");
 				scanf("%s", current->data.album);
 				break;
 
-			case 3:
+			case 3: //song
 				printf("Enter the new song name\n\n");
 				printf("Input: ");
 				scanf("%s", current->data.song);
 				break;
 
-			case 4:
+			case 4: //genre
 				printf("Enter the new genre name\n\n");
 				printf("Input: ");
 				scanf("%s", current->data.genre);
 				break;
 
-			case 5:
+			case 5: //length (duration)
 				printf("Enter minutes: \n\n");
 				printf("Input: ");
 				scanf("%d", current->data.length.minutes);
@@ -355,19 +358,20 @@ void edit(Node* head) {
 				scanf("%d", current->data.length.seconds);
 				break;
 
-			case 6:
+			case 6: //times played 
 				printf("Enter new number of times played: \n\n");
 				printf("Input: ");
 				scanf("%d", current->data.timesPlayed);
 				break;
 
-			case 7:
+			case 7: //rating
 				printf("Enter new rating: \n\n");
 				printf("Input: ");
 				scanf("%d", current->data.rating);
 				break;
 		}
 
+		//display modified record
 		printf("\n\nModified record: %s, %s, %s, %s, %d min %d sec, %d, %d\n", current->data.artist,
 			current->data.album, current->data.song, current->data.genre, current->data.length.minutes,
 			current->data.length.seconds, current->data.timesPlayed, current->data.rating);
