@@ -1,3 +1,10 @@
+/*
+* Name: Brandon Xu
+* Project: DigitalMusicManager
+* File: header.h
+* Date: 2/1/23
+* Description: Header file containing library inclusions and struct and function declarations to be used throughout the project
+*/
 #define _CRT_SECURE_NO_WARNINGS
 
 //library imports

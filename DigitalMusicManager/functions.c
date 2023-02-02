@@ -1,3 +1,12 @@
+/*
+* Name: Brandon Xu
+* Project: DigitalMusicManager
+* File: functions.c
+* Date: 2/1/23
+* Description: Functions file that contains the full function definitions that will be used in the main file
+*/
+
+
 #include "header.h"
 
 int handleMainMenu(void) {

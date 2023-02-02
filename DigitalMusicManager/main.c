@@ -1,3 +1,11 @@
+/*
+* Name: Brandon Xu
+* Project: DigitalMusicManager
+* File: main.c
+* Date: 2/1/23
+* Description: Main file for execution of the program. Contains the main loops and overarching logic.
+*/
+
 #include "header.h"
 
 int main(void) {
