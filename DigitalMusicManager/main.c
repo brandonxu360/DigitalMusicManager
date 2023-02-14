@@ -6,13 +6,30 @@
 * Description: Main file for execution of the program. Contains the main loops and overarching logic.
 */
 
+#include "testheader.h"
 #include "header.h"
 
 int main(void) {
+
+	/*
+	
+	TEST FUNCTIONS
+
+	insertTest();
+	deleteTest();
+	shuffleTest();
+
+	*/
+
 	//variable declarations
 	int choice = 0;
 	Node* head = NULL;
-	FILE* file;
+
+	//needed for random number generation for shuffle function
+	srand(time(NULL));
+
+	//open file for read
+	FILE* file = fopen("musicPlayList.csv", "r");
 
 	do {
 
@@ -22,8 +39,7 @@ int main(void) {
 		switch (choice) {
 
 			case 1: 
-				//open file for read
-				file = fopen("musicPlayList.csv", "r");
+				//read file into list
 				head = load(file);
 
 				//close file
@@ -36,6 +52,7 @@ int main(void) {
 			case 2: 
 				//open file for overwrite
 				file = fopen("musicPlayList.csv", "w");
+
 				store(file, head);
 
 				//close file
@@ -51,11 +68,33 @@ int main(void) {
 				break;
 
 			case 4:
+				insert(&head);
+				break;
+
+			case 5:
+				delete(&head);
+				break;
+
+			case 6:
 				edit(head);
 				break;
-		}
 
-		
+			case 7:
+				sort(head);
+				break;
+
+			case 8: 
+				rate(head);
+				break;
+
+			case 9:
+				play(head);
+				break;
+
+			case 10:
+				shuffle(head);
+				break;
+		}
 
 		//pause
 		system("pause");
@@ -64,9 +103,18 @@ int main(void) {
 		system("cls");
 
 	} while (choice != 11);
+
+	//open file for overwrite
+	file = fopen("musicPlayList.csv", "w");
+
+	//saves most recent list to file
+	store(file, head);
 	
 	//exit message
 	printf("Goodbye!");
+
+	//close file
+	fclose(file);
 
 
 	return 0;

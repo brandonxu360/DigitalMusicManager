@@ -129,9 +129,11 @@
   <ItemGroup>
     <ClCompile Include="functions.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="testfunctions.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header.h" />
+    <ClInclude Include="testheader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="musicPlayList.csv" />

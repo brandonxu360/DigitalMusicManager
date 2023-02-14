@@ -5,12 +5,16 @@
 * Date: 2/1/23
 * Description: Header file containing library inclusions and struct and function declarations to be used throughout the project
 */
+
+#pragma once
+
 #define _CRT_SECURE_NO_WARNINGS
 
 //library imports
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <Windows.h>
 
 /*
 * STRUCT
@@ -48,8 +52,8 @@ typedef struct record {
 */
 typedef struct node {
 	Record data;
-	struct Node* next;
-	struct Node* prev;
+	struct node* next;
+	struct node* prev;
 } Node;
 
 /*
@@ -149,3 +153,87 @@ void display(Node* head);
 * Outputs: void
 */
 void edit(Node* head);
+
+/*
+* FUNCTION
+* Name: rate
+* Description: Prompts the user to find records by song name and to choose which record to rate. The user is
+*			   able to set the rating of the record they chose.
+* Inputs: Node* head
+* Outputs: void
+*/
+void rate(Node* head);
+
+/*
+* FUNCTION
+* Name: play
+* Description: Prompts the user to find records by song name and to choose which record to play from. The 
+*			   function will then begin displaying the contents of that record to console for a short period.
+*			   It will then clear the screen and repeat the same for the next record, until the last record is
+*			   reached.
+* Inputs: Node* head
+* Outputs: void
+*/
+void play(Node* head);
+
+/*
+* FUNCTION
+* Name: insert
+* Description: Prompts user for all the details for a new record and inserts the new record at the front of the list.
+* Inputs: Node* head
+* Outputs: indirectly returns head of list
+*/
+void insert(Node** head);
+
+/*
+* FUNCTION
+* Name: delete
+* Description: Prompts user for song title and removes the matching record from the list. If no songs match the input, 
+*			   the list remains unchanged.
+* Inputs: Node** head
+* Outputs: void
+*/
+void delete(Node** head);
+
+/*
+* FUNCTION
+* Name: partition
+* Description: Sorts list into two halves around the pivot based on the sortCrit (sort criteria) - one "smaller" list 
+*			   before the pivot and one "larger" list after the pivot. Helper function used for quicksort
+* Inputs: Node* start, Node* end, int sortCrit
+* Outputs: void
+*/
+Node* partition(Node* start, Node* end, int sortCrit);
+
+/*
+* FUNCTION
+* Name: quickSort
+* Description: Recursive function that uses partition to continuously sort lists into "smaller" and "larger" halves until
+*			   the base case list length is reached. Selects sorting method based on sortCrit
+* Inputs: Node* start, Node* end, int sortCrit
+* Outputs: void
+*/
+void quickSort(Node* start, Node* end, int sortCrit);
+
+/*
+* FUNCTION
+* Name: sort
+* Description: Prompts user for sorting method out of the following:
+*				- based on artist (A-Z)
+*				- based on album title (A-Z)
+*				- based on rating (1-5)
+*				- based on times played (most to least)
+*			   Then sorts the list using quicksort based on the selected method.
+* Inputs: Node* head
+* Outputs: void
+*/
+void sort(Node* head);
+
+/*
+* FUNCTION
+* Name: shuffle
+* Description: Provides a random order in which the songs are played and plays the songs in that order
+* Inputs: Node* head
+* Outputs: void
+*/
+void shuffle(Node* head);
